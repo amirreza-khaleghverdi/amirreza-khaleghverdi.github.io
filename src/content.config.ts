@@ -4,6 +4,7 @@ import { glob } from "astro/loaders";
 import config from "@/config";
 
 export const BLOG_PATH = "src/content/posts";
+export const PROJECTS_PATH = "src/content/projects";
 
 const posts = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: `./${BLOG_PATH}` }),
@@ -34,4 +35,16 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { posts, pages };
+
+const projects = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: `./${PROJECTS_PATH}` }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      draft: z.boolean().optional(),
+      ogImage: image().or(z.string()).optional(),
+    }),
+});
+
+export const collections = { posts, pages, projects };

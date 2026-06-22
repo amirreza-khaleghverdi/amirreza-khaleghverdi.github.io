@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  variant?: "h2" | "h3";
+} & CollectionEntry<"projects">;
+
+const { variant: Heading = "h2", id, data } = Astro.props;
+const { title, description } = data;
+---
+
+<li class="my-6">
+  
+    <a
+    href={`/projects/${id}/`}
+    class:list={[
+      "text-accent inline-block text-lg font-medium",
+      "decoration-dashed underline-offset-4 hover:underline",
+      "focus-visible:no-underline focus-visible:underline-offset-0",
+    ]}
+    >
+    <Heading>{title}</Heading>
+  </a>
+  <p>{description}</p>
+</li>

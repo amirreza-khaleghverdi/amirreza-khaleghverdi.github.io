@@ -1,0 +1,46 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import config from "@/config";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+
+  return projects.map(project => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+type Props = {
+  project: CollectionEntry<"projects">;
+};
+
+const { project } = Astro.props;
+const { title, description } = project.data;
+const { Content } = await render(project);
+---
+
+<Layout title={`${title} | ${config.site.title}`} description={description}>
+  <Header />
+
+  <main id="main-content" class="app-layout mt-8">
+    <h1 class="text-accent inline-block text-2xl font-bold sm:text-3xl">
+      {title}
+    </h1>
+
+    <article
+      class:list={[
+        "mt-8 w-full",
+        "app-prose max-w-app",
+        "prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)",
+      ]}
+    >
+      <Content />
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
