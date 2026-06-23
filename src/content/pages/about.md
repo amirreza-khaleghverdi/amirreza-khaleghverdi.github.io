@@ -1,37 +1,40 @@
 ---
 title: "About"
-description: "A bit about me and this blog."
+description: "A bit about me."
 ---
 
-AstroPaper is a minimal, accessible and SEO-friendly blog theme built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
+<div class="flex flex-col md:flex-row items-center gap-8 mb-8">
+  <div class="w-full md:w-1/2">
 
-![Astro Paper](@/assets/images/astropaper-og.jpg)
+## Who am I?
+Hi, I'm Amirreza Khaleghverdi — Computer Engineering student at Iran University of Science and Technology (IUST).
+My friends usually just call me Khalegh.
 
-AstroPaper provides a solid foundation for blogs, or even portfolios\_ with full markdown support, built-in dark mode, and a clean layout that works out-of-the-box.
+I work mostly with C#, PHP and Python — building things and figuring out how software works under the hood.
 
-The blog posts in this theme also serve as guides, docs or example articles\_ making AstroPaper a flexible starting point for your next content-driven site.
+  </div>
+  <div class="w-full md:w-1/2">
+    <img src="/src/assets/images/example.jpg" alt="Amirreza Khaleghverdi" class="w-full rounded-lg shadow-md" />
+  </div>
+</div>
 
-## Features
+---
 
-AstroPaper comes with a set of useful features that make content publishing easy and effective:
+## Interests
 
-- SEO-friendly
-- Fast performance
-- Light & dark mode
-- Highly customizable
-- Organizable blog posts
-- Responsive & accessible
-- Static search with [PageFind](https://pagefind.app/)
-- Automatic social image generation
+I'm genuinely passionate about software itself — not just writing it, but understanding how and why things work the way they do.
+The workflow behind it and things like that.
 
-and so much more.
+Outside of coding, I'm a huge fan of video games, especially the **Resident Evil** franchise — survival horror done right.
 
-## Show your support
+---
 
-If you like [AstroPaper](https://github.com/satnaing/astro-paper), consider giving it a star ⭐️.
+## Why this site?
 
-Found a bug 🐛 or have an improvement ✨ in mind? Feel free to open an [issue](https://github.com/satnaing/astro-paper/issues), submit a [pull request](https://github.com/satnaing/astro-paper/pulls) or start a [discussion](https://github.com/satnaing/astro-paper/discussions).
+I thought it'd be cooler to have my own little corner of the internet instead of just a GitHub profile or a LinkedIn page.
 
-If you find this theme helpful, you can also [sponsor me on GitHub](https://github.com/sponsors/satnaing) or [buy me a coffee](https://buymeacoffee.com/satnaing) to show your support — every penny counts.
+This is where I share projects I've built, things I've learned and whatever's on my mind. No algorithm, no feed — just my stuff.
 
-Kyay zuu! 🙏🏼
+---
+
+Feel free to reach out if you want to talk code, games or anything in between! 
