@@ -3,13 +3,13 @@ import { defineAstroPaperConfig } from "./src/types/config";
 export default defineAstroPaperConfig({
   site: {
     url: "https://amirreza-khaleghverdi.github.io",
-    title: "AstroPaper",
-    description: "A minimal, responsive and SEO-friendly Astro blog theme.",
-    author: "Sat Naing",
-    profile: "https://satna.ing",
+    title: "Amirreza Khaleghverdi",
+    description: "Personal website of Amirreza Khaleghverdi — developer, projects and blog posts.",
+    author: "Amirreza Khaleghverdi",
+    profile: "https://github.com/amirreza-khaleghverdi",
     ogImage: "default-og.jpg",
     lang: "en",
-    timezone: "Asia/Bangkok",
+    timezone: "Asia/Tehran",
     dir: "ltr",
   },
   posts: {
@@ -23,15 +23,14 @@ export default defineAstroPaperConfig({
     showArchives: true,
     showBackButton: true,
     editPost: {
-      enabled: true,
-      url: "https://github.com/satnaing/astro-paper/edit/main/",
+      enabled: false,
     },
     search: "pagefind",
   },
   socials: [
-    { name: "github",   url: "https://github.com/satnaing/astro-paper" },
-    { name: "x",        url: "https://x.com/username" },
-    { name: "linkedin", url: "https://www.linkedin.com/in/username/" },
+    { name: "github",   url: "https://github.com/amirreza-khaleghverdi" },
+    // { name: "x",        url: "https://x.com/username" },
+    // { name: "linkedin", url: "https://www.linkedin.com/in/username/" },
     { name: "mail",     url: "mailto:yourmail@gmail.com" },
   ],
   shareLinks: [
