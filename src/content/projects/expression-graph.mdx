@@ -1,0 +1,113 @@
+---
+title: "Expression Graph Calculator"
+author: "Amirreza Khaleghverdi"
+description: "A C# project that parses and visualizes mathematical expressions as binary trees"
+pubDatetime: 2025-06-24T00:00:00Z
+featured: true
+draft: false
+tags: 
+  - csharp
+  - data-structures
+  - algorithms
+  - WPF
+timezone: "Asia/Tehran"
+---
+
+Here's my Expression Graph Calculator — built with C# and WPF as my Data Structures & Algorithms course project.
+
+## Table of contents
+
+
+## What is it?
+
+A calculator built in C# that doesn't just evaluate math expressions —
+it also builds and visualizes them as a binary expression tree.
+Type in something like `2+3*4` and it shows you exactly how the expression
+is parsed and evaluated step by step as a graph.
+
+This was my Data Structures & Algorithms course project at IUST.
+
+---
+
+## Why I built this
+
+Most calculators are black boxes — you type an expression and get a number.
+I wanted to build something that shows the *structure* behind the math,
+how operators and operands relate to each other and in what order they get evaluated.
+
+---
+
+## How it works
+
+The project has 3 main components:
+
+### 1. Preprocessor & Normalizer
+Before anything gets parsed, the raw input goes through a normalization step.
+This handles things like:
+- Removing spaces
+- Fixing leading signs like `--3` → `+3`
+- Validating characters
+- Catching invalid expressions like division by zero early
+
+### 2. Tokenizer
+Breaks the normalized string into a list of meaningful tokens.
+For example `2+3*4` becomes `["2", "+", "3", "*", "4"]`.
+It also handles functions like `sin`, `cos`, `log` and operators like `√` and `^`.
+
+### 3. Expression Tree
+This is the core of the project. It uses a **recursive descent parser**
+with **operator precedence climbing** to build a binary tree where:
+- Leaf nodes are numbers or variables
+- Internal nodes are operators or functions
+
+For example `2+3*4` becomes:
+```
+    +
+   / \
+  2   *
+     / \
+    3   4
+```
+Multiplication being deeper in the tree means it gets evaluated first — 
+which is exactly how operator precedence works.
+
+### 4. Evaluator
+Traverses the tree using **postfix (left-right-root)** traversal to compute the result.
+Supports `+`, `-`, `*`, `/`, `^`, `√`, `sin`, `cos`, `tan`, `cot` and `log`.
+
+## Extra Features
+
+### Custom Operator Precedence
+One unique thing about this calculator is that you can change the priority of operator groups:
+- Addition & Subtraction
+- Multiplication & Division  
+- Power & Root (√)
+
+So you can experiment with non-standard precedence and see how it changes the expression tree visually.
+
+### Variable Support
+You can use variables like `x`, `y`, `z` in your expression, assign them values and the calculator will evaluate the result.
+For example: `x^2 + y` with `x=3, y=4` gives `13`.
+
+---
+
+## Challenges & what I learned
+
+- Handling **operator precedence** and **right associativity** (for `^` and `√`) was tricky
+- Dealing with **edge cases** in the normalizer like `--3`, `+(3)`, leading zeros
+- Understanding recursive descent parsing for the first time
+- Floating point precision issues with trig functions (had to add rounding logic)
+
+---
+
+## Screenshots
+
+<div class="grid grid-cols-2 gap-4">
+  <img src="/src/assets/images/calculator-main.png" alt="Calculator Main" class="rounded-lg w-full" />
+  <img src="/src/assets/images/graph-view.png" alt="Graph View" class="rounded-lg w-full" />
+  <img src="/src/assets/images/priority-editor.png" alt="Priority Editor" class="rounded-lg w-full" />
+  <img src="/src/assets/images/variable-graph.png" alt="Variable Graph" class="rounded-lg w-full" />
+</div>
+
+> [!NOTE]
+> you can see the install and runnig code my github repo for this project [here](https://github.com/amirreza-khaleghverdi/ExpressionGraph).
