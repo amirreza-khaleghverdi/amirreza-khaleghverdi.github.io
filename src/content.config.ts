@@ -40,10 +40,16 @@ const projects = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: `./${PROJECTS_PATH}` }),
   schema: ({ image }) =>
     z.object({
+      author: z.string().default(config.site.author),
+      pubDatetime: z.date(),
+      modDatetime: z.date().optional().nullable(),
       title: z.string(),
+      featured: z.boolean().optional(),
       description: z.string(),
       draft: z.boolean().optional(),
+      tags: z.array(z.string()).default(["others"]),
       ogImage: image().or(z.string()).optional(),
+      timezone: z.string().optional(),
     }),
 });
 
