@@ -10,7 +10,7 @@ description: "A bit about me."
 Hi, I'm Amirreza Khaleghverdi — Computer Engineering student at Iran University of Science and Technology (IUST).
 My friends usually just call me Khalegh.
 
-I work mostly with C#, PHP and Python — building things and figuring out how software works under the hood.
+I work mostly with C#, PHP — building things and figuring out how software works under the hood.
 
   </div>
   <div class="w-full md:w-1/2">
