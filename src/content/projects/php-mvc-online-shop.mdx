@@ -1,0 +1,85 @@
+---
+title: "Php Mvc OnlineShop"
+author: "Amirreza Khaleghverdi"
+description: "an onlineshop template which has written in raw php with clean code and mvc pattern"
+pubDatetime: 2025-06-24T00:00:00Z
+featured: true
+draft: false
+tags: 
+  - php
+  - mvc
+  - clean-code
+timezone: "Asia/Tehran"
+---
+
+here is my onlineshop template written from scratch using raw php
+
+## table of contents
+
+
+## what is it?
+its actually a simple try to make an onlineshop using php with some clean-code and mvc pattern using raw php
+it has 3 authontication level customer-courier-admin
+
+## why i built this
+
+i wanted to try myself in this field also i made major improvment on it for my database course in university
+
+## How it works
+
+The project follows a classic **MVC (Model-View-Controller)** structure with a single front controller (`index.php`) routing every request based on an `action` query parameter.
+
+```
+Request → index.php (router) → Controller → Model → Database
+                                     ↓
+                                   View → rendered HTML
+```
+
+Each of the three roles has its own dashboard and permission scope:
+
+- **Customer** browses products, adds them to a cart, checks out, and tracks order status.
+- **Courier** sees only the shipments assigned to them and updates delivery status step by step (no skipping or going backwards once a shipment is finalized).
+- **Admin** has full CRUD access to products, customers, couriers, orders, inventory, shipments, and warehouses.
+
+The order lifecycle flows like this:
+
+```
+Cart → Pending Order → Confirmed Order → Stock Reduced
+     → Shipment Created → Assigned to Courier
+     → Status Updates → Delivered
+```
+
+## Tech Stack
+
+- **PHP 8** — raw, no framework, to focus on fundamentals
+- **PDO** — secure, prepared-statement database access
+- **MySQL / MariaDB** — relational database with proper foreign key constraints
+- **HTML5 / CSS3** — custom styling, no CSS framework
+- **Sessions** — authentication and role-based access control
+- **XAMPP** — local development environment
+
+## Database Design
+
+The schema is fully relational with foreign keys enforcing data integrity across 11 tables: `customers`, `courier`, `admin`, `product`, `cart`, `orders`, `orderitem`, `inventory`, `warehouse`, `shipment`, and `deliverystatus`.
+
+A few design decisions worth mentioning:
+
+- `UNSIGNED` integer types are used for all ID and quantity columns since negative values never make sense there, and it doubles the usable positive range.
+- Deleting records with dependencies (like a customer with existing orders, or a courier with active shipments) is blocked at the application level to protect order history and data integrity — instead of a hard delete, the admin gets a clear error explaining why.
+- Delivery status updates are tracked as an append-only history log (`deliverystatus`) rather than overwriting a single status column, so the full timeline of a shipment is always available.
+
+## Planned / Future Improvements
+- [ ] Soft delete instead of hard delete (`is_active` flag)
+- [ ] Email verification on registration
+- [ ] Product search & filtering
+- [ ] Pagination for large product/order lists
+- [ ] Making an API based on the Laravel
+- [ ] Unit tests for models
+
+## Challenges & what I learned
+it has alot to learn for me specially about things like session , design pattern , clean-coding , and also designing database
+
+Some of the more interesting bugs I ran through along the way: timestamp collisions when joining a shipment to its "latest" status (fixed by ordering on the auto-increment `StatusID` instead of `StatusTime`), keeping foreign key column types consistent (`UNSIGNED` mismatches throw a cryptic errno 150), and learning to separate "what the database calls a column" from "what the form sends" without losing my mind across dozens of files.
+
+> [!NOTE]
+> you can see the source code on my github repo for this project [here](https://github.com/amirreza-khaleghverdi/php-mvc-online-shop).
